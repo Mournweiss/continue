@@ -4,13 +4,12 @@ import type { FileType, IDE } from "..";
 
 import { joinPathsToUri } from "../util/uri";
 import { getGlobalContinueIgArray } from "./continueignore";
-import { defaultIgnoreFileAndDir, gitIgArrayFromFile } from "./ignore";
+import { gitIgArrayFromFile } from "./ignore";
 
 export interface WalkerOptions {
   include?: "dirs" | "files" | "both";
   returnRelativeUrisPaths?: boolean;
   source?: string;
-  overrideDefaultIgnores?: Ignore;
   recursive?: boolean;
 }
 
@@ -89,8 +88,9 @@ class DFSWalker {
     let ignoreCacheHits = 0;
 
     let section = Date.now();
+    // Start with global .continueignore patterns only
+    // Per-directory .continueignore / .gitignore patterns are applied via getIgnoreContext
     const defaultAndGlobalIgnores = ignore()
-      .add(this.options.overrideDefaultIgnores ?? defaultIgnoreFileAndDir)
       .add(getGlobalContinueIgArray());
     ignoreFileTime += Date.now() - section;
 

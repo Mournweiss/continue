@@ -2,10 +2,6 @@ import { BLOCK_TYPES } from "@continuedev/config-yaml";
 import ignore from "ignore";
 import * as URI from "uri-js";
 import { IDE } from "..";
-import {
-  DEFAULT_IGNORE_DIRS,
-  DEFAULT_IGNORE_FILETYPES,
-} from "../indexing/ignore";
 import { walkDir } from "../indexing/walkDir";
 import { RULES_MARKDOWN_FILENAME } from "../llm/rules/constants";
 import { getGlobalFolderWithName } from "../util/paths";
@@ -59,16 +55,7 @@ async function getDefinitionFilesInDir(
       return [];
     }
 
-    const overrideDefaultIgnores = ignore()
-      .add(
-        DEFAULT_IGNORE_FILETYPES.filter(
-          (t) => t !== "config.yaml" && t !== "config.yml",
-        ),
-      )
-      .add(DEFAULT_IGNORE_DIRS);
-
     const uris = await walkDir(dir, ide, {
-      overrideDefaultIgnores,
       source: "get assistant files",
     });
     let assistantFilePaths: string[];

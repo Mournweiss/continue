@@ -11,10 +11,6 @@ import * as JSONC from "comment-json";
 import ignore from "ignore";
 import { IDE, InternalMcpOptions } from "../../..";
 import { convertYamlMcpConfigToInternalMcpOptions } from "../../../config/yaml/yamlToContinueConfig";
-import {
-  DEFAULT_IGNORE_DIRS,
-  DEFAULT_IGNORE_FILETYPES,
-} from "../../../indexing/ignore";
 import { walkDir } from "../../../indexing/walkDir";
 import { deduplicateArray } from "../../../util";
 import { getGlobalFolderWithName } from "../../../util/paths";
@@ -44,14 +40,6 @@ export async function loadJsonMcpConfigs(
   }
 
   // Get json files and their contents
-  const overrideDefaultIgnores = ignore()
-    .add(
-      DEFAULT_IGNORE_FILETYPES.filter(
-        (val) => !["config.json", "settings.json"].includes(val),
-      ),
-    )
-    .add(DEFAULT_IGNORE_DIRS);
-
   const jsonFiles: { uri: string; content: string }[] = [];
 
   await Promise.all(
@@ -62,7 +50,6 @@ export async function loadJsonMcpConfigs(
       }
       try {
         const uris = await walkDir(dir, ide, {
-          overrideDefaultIgnores,
           source: "get mcp json files",
         });
         const jsonUris = uris.filter((uri) => uri.endsWith(".json"));

@@ -3,7 +3,6 @@ import { exec } from "node:child_process";
 
 import { Range } from "core";
 import { EXTENSION_NAME } from "core/util/constants";
-import { DEFAULT_IGNORES, defaultIgnoresGlob } from "core/indexing/ignore";
 import * as URI from "uri-js";
 import * as vscode from "vscode";
 
@@ -490,10 +489,6 @@ class VsCodeIde implements IDE {
       );
 
       const ignoreGlobs: Set<string> = new Set();
-      // Add default ignores from core
-      for (const pattern of DEFAULT_IGNORES) {
-        ignoreGlobs.add(pattern);
-      }
 
       for (const file of ignoreFiles) {
         const content = await this.ideUtils.readFile(file);
@@ -565,8 +560,6 @@ class VsCodeIde implements IDE {
           ".continueignore",
           "--ignore-file",
           ".gitignore",
-          "--glob",
-          defaultIgnoresGlob,
           ...(maxResults ? ["--max-count", String(maxResults)] : []),
         ]);
 
@@ -600,9 +593,6 @@ class VsCodeIde implements IDE {
         "-C",
         "2", // Show 2 lines of context
         "--heading", // Only show filepath once per result
-        // Use a single glob with all default ignores
-        "--glob",
-        defaultIgnoresGlob,
         ...(maxResults ? ["-m", maxResults.toString()] : []),
         "-e",
         query, // Pattern to search for

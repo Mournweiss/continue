@@ -1,6 +1,5 @@
 import { Chunk, IDE } from "core";
 import { languageForFilepath } from "core/autocomplete/constants/AutocompleteLanguageInfo";
-import { DEFAULT_IGNORE_DIRS } from "core/indexing/ignore";
 import { deduplicateArray } from "core/util";
 import { getParserForFile } from "core/util/treeSitter";
 import * as vscode from "vscode";
@@ -86,17 +85,10 @@ export async function expandSnippet(
     );
   });
 
-  // Filter out defintions not under workspace directories
+  // Filter out definitions not under workspace directories
   const workspaceDirectories = await ide.getWorkspaceDirs();
   callExpressionDefinitions = callExpressionDefinitions.filter((def) => {
-    return (
-      workspaceDirectories.some((dir) => def.filepath.startsWith(dir)) &&
-      !DEFAULT_IGNORE_DIRS.some(
-        (dir) =>
-          def.filepath.includes(`/${dir}/`) ||
-          def.filepath.includes(`\\${dir}\\`),
-      )
-    );
+    return workspaceDirectories.some((dir) => def.filepath.startsWith(dir));
   });
 
   const chunks = await Promise.all(

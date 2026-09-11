@@ -2,13 +2,15 @@ import ignore from "ignore";
 import type { FileType, IDE } from "../";
 import { findUriInDirs, getUriPathBasename } from "../util/uri";
 import { getGlobalContinueIgArray } from "./continueignore";
-import { defaultIgnoreFileAndDir } from "./ignore";
 import { getIgnoreContext } from "./walkDir";
 
 /*
     Process:
-    1. Check global/default ignores
-    2. Walk UP tree from file, checking ignores at each level
+    1. Walk UP tree from file, checking .continueignore / .gitignore at each level
+    2. Also check global .continueignore
+
+    All ignore patterns are controlled exclusively via .continueignore files.
+    .gitignore is also respected for compatibility.
 
     TODO there might be issues with symlinks here
 */
@@ -24,9 +26,7 @@ export async function shouldIgnore(
     return true;
   }
 
-  const defaultAndGlobalIgnores = ignore()
-    .add(defaultIgnoreFileAndDir)
-    .add(getGlobalContinueIgArray());
+  const globalIgnores = ignore().add(getGlobalContinueIgArray());
 
   let currentDir = uri;
   let directParent = true;
@@ -57,7 +57,7 @@ export async function shouldIgnore(
       currentDir,
       dirEntries,
       ide,
-      defaultAndGlobalIgnores,
+      globalIgnores,
     );
 
     let relativePath = uri.substring(currentDir.length + 1);
