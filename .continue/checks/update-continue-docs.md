@@ -87,4 +87,4 @@ Determine if the Continue Docs should be updated based on the changes in the pro
 
 # Context: Continue
 
-Continue is the leading open-source AI coding agent, with IDE extensions for VS Code and JetBrains, as well as a CLI, `cn`.
+Continue is the leading open-source AI coding agent, with IDE extensions for VS Code, as well as a CLI, `cn`.

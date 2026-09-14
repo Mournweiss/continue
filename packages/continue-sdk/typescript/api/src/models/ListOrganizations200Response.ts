@@ -2,7 +2,7 @@
 /* eslint-disable */
 /**
  * Continue Hub IDE API
- * API for Continue IDE to fetch assistants and other related information. These endpoints are primarily used by the Continue IDE extensions for VS Code and JetBrains.
+ * API for Continue IDE to fetch assistants and other related information. These endpoints are primarily used by the Continue IDE extension.
  *
  * The version of the OpenAPI document: 1.0.0
  *

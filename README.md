@@ -18,17 +18,11 @@
 
 > _Note: The `continuedev/continue` repository is no longer actively maintained and is read-only for all users._
 
-Continue is a coding agent available as a [CLI](#cli), [VS Code extension](#vs-code), and [JetBrains plugin](#jetbrains).
+Continue is a coding agent available as a [CLI](#cli), [VS Code extension](#vs-code).
 
 ## Documentation
 
 To learn how to configure Continue, how it works, and how to customize it, check out the [Continue Docs](https://docs.continue.dev).
-
-## Final 2.0.0 Release
-
-We polished Continue and did a final 2.0.0 release of the VS Code extension, CLI, and JetBrains plugin.
-
-This included removing anonymous telemetry, pulling out authentication, squashing bugs, and more.
 
 ### VS Code
 
@@ -37,12 +31,6 @@ This included removing anonymous telemetry, pulling out authentication, squashin
 ### CLI
 
 [![npm](https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white)](https://www.npmjs.com/package/@continuedev/cli) [![View source](https://img.shields.io/badge/View_source-181717?logo=github&logoColor=white)](extensions/cli)
-
-### JetBrains
-
-> _Note: We recommend using the Continue CLI instead of the JetBrains plugin._
-
-[![GitHub Releases](https://img.shields.io/badge/GitHub_Releases-181717?logo=github&logoColor=white)](https://github.com/continuedev/continue/releases) [![View source](https://img.shields.io/badge/View_source-181717?logo=github&logoColor=white)](extensions/intellij)
 
 ## Contributors
 

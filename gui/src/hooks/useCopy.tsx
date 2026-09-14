@@ -1,6 +1,5 @@
-import { useState, useContext, useCallback } from "react";
+import { useCallback, useContext, useState } from "react";
 import { IdeMessengerContext } from "../context/IdeMessenger";
-import { isJetBrains } from "../util";
 
 export default function useCopy(text: string | (() => string)) {
   const [copied, setCopied] = useState<boolean>(false);
@@ -8,11 +7,7 @@ export default function useCopy(text: string | (() => string)) {
 
   const copyText = useCallback(() => {
     const textVal = typeof text === "string" ? text : text();
-    if (isJetBrains()) {
-      ideMessenger.post("copyText", { text: textVal });
-    } else {
-      navigator.clipboard.writeText(textVal);
-    }
+    navigator.clipboard.writeText(textVal);
 
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);

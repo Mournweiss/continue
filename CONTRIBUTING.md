@@ -18,7 +18,6 @@
       - [Fork the Continue Repository](#fork-the-continue-repository)
       - [VS Code](#vs-code)
         - [Debugging](#debugging)
-      - [JetBrains](#jetbrains)
     - [Our Git Workflow](#our-git-workflow)
     - [Development Workflow](#development-workflow)
     - [Formatting](#formatting)
@@ -31,7 +30,6 @@
     - [Adding Models](#adding-models)
   - [📐 Continue Architecture](#-continue-architecture)
     - [Continue VS Code Extension](#continue-vs-code-extension)
-    - [Continue JetBrains Extension](#continue-jetbrains-extension)
   - [Contributor License Agreement](#contributor-license-agreement-cla)
 
 # ❤️ Ways to Contribute
@@ -169,10 +167,6 @@ without rebuilding. In some cases, you may need to refresh the _Host VS Code_ wi
 Similarly, any changes to `core` or `extensions/vscode` will be automatically included by just reloading the _Host VS
 Code_ window with cmd/ctrl+shift+p "Reload Window".
 
-#### JetBrains
-
-See [`intellij/CONTRIBUTING.md`](./extensions/intellij/CONTRIBUTING.md) for the JetBrains extension.
-
 ### Our Git Workflow
 
 We keep a single permanent branch: `main`. When we are ready to create a "pre-release" version, we create a tag on the
@@ -212,7 +206,6 @@ Guidelines for using theme colors:
 Guidelines for adding/updating theme colors:
 
 - Choose sensible VS Code variables to add/update in [gui/src/styles/theme.ts](gui/src/styles/theme.ts) (see [here](https://code.visualstudio.com/api/references/theme-color) and [here](https://www.notion.so/1fa1d55165f78097b551e3bc296fcf76?pvs=25) for inspiration)
-- Choose sensible JetBrains named colors to add/update in `GetTheme.kt` (flagship LLMs can give you good suggestions to try)
 - Update `tailwind.config.js` if needed
 - Use the Theme Test Page to check colors. This can be accessed by going to `Settings` -> `Help` -> `Theme Test Page` in dev/debug mode.
 

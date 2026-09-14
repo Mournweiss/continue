@@ -77,19 +77,8 @@ export function loadConfigContextProviders(
     providers.push(new DocsContextProvider({}));
   }
 
-  // @problems and @terminal are not supported in jetbrains
-  const filteredProviders = providers.filter((pv) => {
-    if (ideType === "jetbrains") {
-      return (
-        pv.description.title !== TerminalContextProvider.description.title &&
-        pv.description.title !== ProblemsContextProvider.description.title
-      );
-    }
-    return true;
-  });
-
   return {
-    providers: filteredProviders,
+    providers,
     errors,
   };
 }

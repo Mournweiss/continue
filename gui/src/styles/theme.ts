@@ -182,7 +182,6 @@ export const THEME_COLORS = {
   },
 };
 
-// TODO: add fonts - GUI fonts in jetbrains differ from IDE:
 // --vscode-editor-font-family;
 // --vscode-font-family;
 export const THEME_CSS_VARS = Object.values(THEME_COLORS)

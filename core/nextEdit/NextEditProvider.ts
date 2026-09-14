@@ -137,11 +137,6 @@ export class NextEditProvider {
       return undefined;
     }
 
-    // Temporary fix for JetBrains autocomplete bug as described in https://github.com/continuedev/continue/pull/3022
-    if (llm.model === undefined && llm.completionOptions?.model !== undefined) {
-      llm.model = llm.completionOptions.model;
-    }
-
     // Ignore empty API keys for Mistral since we currently write
     // a template provider without one during onboarding
     if (llm.providerName === "mistral" && llm.apiKey === "") {
@@ -530,22 +525,9 @@ export class NextEditProvider {
     if (outcome) {
       // Handle NextEditProvider-specific state.
       this.previousCompletions.push(outcome);
-
-      // Mark as displayed for JetBrains
-      await this._markDisplayedIfJetBrains(helper.input.completionId, outcome);
     }
 
     return outcome;
-  }
-
-  private async _markDisplayedIfJetBrains(
-    completionId: string,
-    outcome: NextEditOutcome,
-  ): Promise<void> {
-    const ideType = (await this.ide.getIdeInfo()).ideType;
-    if (ideType === "jetbrains") {
-      this.markDisplayed(completionId, outcome);
-    }
   }
 
   /**

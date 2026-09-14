@@ -46,8 +46,7 @@ alwaysApply: false
 1. **Visual Introduction**: Lead with GIFs or images showing the feature in action
 2. **Purpose Statement**: Brief explanation of what the feature does and when to use it
 3. **Step-by-Step Instructions**: Clear, actionable steps with keyboard shortcuts
-4. **Platform-Specific Notes**: Separate sections for VS Code and JetBrains when needed
-5. **Additional Tips**: Advanced usage or troubleshooting notes
+4. **Additional Tips**: Advanced usage or troubleshooting notes
 
 ### Section Headers
 
@@ -85,18 +84,12 @@ alwaysApply: false
 - Use relative links to other documentation pages
 - Format: `[descriptive text](/path/to/page)`
 
-### Platform Differences
-
-- Always address both VS Code and JetBrains when applicable
-- Use clear subheadings to separate platform-specific instructions
-- Lead with the more common platform (typically VS Code) when both are covered
-
 ## Language Conventions
 
 ### Terminology
 
 - **Consistent Terms**: Use the same terms throughout (e.g., "LLM" not "AI model" in some places)
-- **Product Names**: Capitalize product names correctly (VS Code, JetBrains, Continue)
+- **Product Names**: Capitalize product names correctly (VS Code, Continue)
 - **Feature Names**: Use consistent capitalization for Continue features (Chat, Edit, Agent, Autocomplete)
 
 ### Abbreviations

@@ -167,7 +167,6 @@ function TipTapEditorInner(props: TipTapEditorProps) {
 
   const { handleKeyUp, handleKeyDown } = useEditorEventHandlers({
     editor,
-    isOSREnabled: isOSREnabled,
     editorFocusedRef,
     setActiveKey,
   });

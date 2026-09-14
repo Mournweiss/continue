@@ -110,19 +110,6 @@ describe("loadConfigContextProviders", () => {
       );
     });
 
-    it("should exclude problems and terminal in jetbrains", () => {
-      const result = loadConfigContextProviders([], false, "jetbrains");
-
-      expect(result.errors).toEqual([]);
-      expect(result.providers).toHaveLength(4);
-
-      const providerTitles = result.providers.map((p) => p.description.title);
-      expect(providerTitles).toEqual(
-        expect.arrayContaining(["file", "current-file", "diff", "rules"]),
-      );
-    });
-  });
-
   it("should return default + docs when has docs is true", () => {
     const result = loadConfigContextProviders([], true, "vscode");
 

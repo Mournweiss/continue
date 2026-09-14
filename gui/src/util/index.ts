@@ -37,29 +37,15 @@ export function getMetaKeyLabel(): string {
   return getPlatform() === "mac" ? "⌘" : "Ctrl";
 }
 
-export function getAltKeyLabel(): string {
-  const platform = getPlatform();
-  switch (platform) {
-    case "mac":
-      return "⌥";
-    default:
-      return "Alt";
-  }
-}
-
 export function getFontSize(): number {
-  return getLocalStorage("fontSize") ?? (isJetBrains() ? 15 : 14);
+  return getLocalStorage("fontSize") ?? 14;
 }
 
 export function fontSize(n: number): string {
   return `${getFontSize() + n}px`;
 }
 
-export function isJetBrains() {
-  return getLocalStorage("ide") === "jetbrains";
-}
-
-export const isShareSessionSupported = () => !isJetBrains();
+export const isShareSessionSupported = () => true;
 
 export function isWebEnvironment(): boolean {
   return (

@@ -24,8 +24,6 @@ export const commonDocsRepos: string[] = [
   //   "https://github.com/nvie/gitflow",
   //   "https://github.com/pallets/flask",
   //   "https://github.com/keras-team/keras",
-  //   "https://github.com/spring-projects/spring-boot",
-  //   "https://github.com/JetBrains/kotlin",
   //   "https://github.com/saltstack/salt",
   //   "https://github.com/apache/kafka",
   //   "https://github.com/moby/moby",

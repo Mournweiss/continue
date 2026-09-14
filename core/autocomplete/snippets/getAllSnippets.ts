@@ -36,9 +36,9 @@ function racePromise<T>(promise: Promise<T[]>, timeout = 100): Promise<T[]> {
   return Promise.race([promise, timeoutPromise]);
 }
 
-// Some IDEs might have special ways of finding snippets (e.g. JetBrains and VS Code have different "LSP-equivalent" systems,
-// or they might separately track recently edited ranges)
-async function getIdeSnippets(
+// VS Code uses LSP to find definitions and snippets from the current cursor position.
+// It also tracks recently edited ranges separately for autocomplete context.
+async function getLspSnippets(
   helper: HelperVars,
   ide: IDE,
   getDefinitionsFromLsp: GetLspDefinitionsFunction,
@@ -194,7 +194,7 @@ export const getAllSnippets = async ({
       contextRetrievalService.getSnippetsFromImportDefinitions(helper),
     ),
     IDE_SNIPPETS_ENABLED
-      ? racePromise(getIdeSnippets(helper, ide, getDefinitionsFromLsp))
+      ? racePromise(getLspSnippets(helper, ide, getDefinitionsFromLsp))
       : [],
     [], // racePromise(getDiffSnippets(ide)) // temporarily disabled, see https://github.com/continuedev/continue/pull/5882,
     racePromise(getClipboardSnippets(ide)),
@@ -243,7 +243,7 @@ export const getAllSnippetsWithoutRace = async ({
     contextRetrievalService.getRootPathSnippets(helper),
     contextRetrievalService.getSnippetsFromImportDefinitions(helper),
     IDE_SNIPPETS_ENABLED
-      ? getIdeSnippets(helper, ide, getDefinitionsFromLsp)
+      ? getLspSnippets(helper, ide, getDefinitionsFromLsp)
       : [],
     [], // racePromise(getDiffSnippets(ide)) // temporarily disabled, see https://github.com/continuedev/continue/pull/5882,
     getClipboardSnippets(ide),

@@ -29,8 +29,3 @@ Implement the message in the appropriate location:
 - **Messages to core**: `core/core.ts`
 - **Messages to GUI**: `useWebviewListener` hook
 - **Messages to VS Code IDE**: `VsCodeMessenger.ts`
-- **Messages to JetBrains IDE**: `IdeProtocolClient.kt`
-
-## 6. Test the implementation
-
-Verify that your message works correctly in both VS Code and JetBrains IDEs if applicable.

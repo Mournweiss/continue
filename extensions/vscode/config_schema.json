@@ -108,7 +108,10 @@
           "type": "string"
         }
       },
-      "required": ["cert", "key"]
+      "required": [
+        "cert",
+        "key"
+      ]
     },
     "RequestOptions": {
       "title": "RequestOptions",
@@ -417,7 +420,6 @@
         "promptTemplates": {
           "title": "Prompt Templates",
           "markdownDescription": "A mapping of prompt template name ('edit' is currently the only one used in Continue) to a string giving the prompt template. See [here](https://docs.continue.dev/model-setup/configuration#customizing-the-edit-prompt) for an example.",
-          "x-intellij-html-description": "A mapping of prompt template name ('edit' is currently the only one used in Continue) to a string giving the prompt template. See <a href='https://docs.continue.dev/model-setup/configuration#customizing-the-edit-prompt'>here</a> for an example.",
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -466,8 +468,10 @@
         "apiType": {
           "title": "Api Type",
           "markdownDescription": "OpenAI API type, either `openai` or `azure`",
-          "x-intellij-html-description": "OpenAI API type, either <code>openai</code> or <code>azure</code>",
-          "enum": ["openai", "azure"]
+          "enum": [
+            "openai",
+            "azure"
+          ]
         },
         "apiVersion": {
           "title": "Api Version",
@@ -494,7 +498,11 @@
           }
         }
       },
-      "required": ["title", "provider", "model"],
+      "required": [
+        "title",
+        "provider",
+        "model"
+      ],
       "allOf": [
         {
           "if": {
@@ -504,7 +512,9 @@
               }
             },
             "not": {
-              "required": ["provider"]
+              "required": [
+                "provider"
+              ]
             }
           },
           "then": {
@@ -540,46 +550,67 @@
                 ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
-            "required": ["apiKey"]
+            "required": [
+              "apiKey"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "provider": {
-                "enum": ["bedrockimport"]
+                "enum": [
+                  "bedrockimport"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
-            "required": ["modelArn"]
+            "required": [
+              "modelArn"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "provider": {
-                "enum": ["huggingface-tgi", "huggingface-inference-api"]
+                "enum": [
+                  "huggingface-tgi",
+                  "huggingface-inference-api"
+                ]
               }
             }
           },
           "then": {
-            "required": ["apiBase"]
+            "required": [
+              "apiBase"
+            ]
           },
-          "required": ["provider"]
+          "required": [
+            "provider"
+          ]
         },
         {
           "if": {
             "properties": {
               "provider": {
-                "enum": ["openai"]
+                "enum": [
+                  "openai"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -599,10 +630,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["cloudflare"]
+                "enum": [
+                  "cloudflare"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -660,10 +695,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["openai"]
+                "enum": [
+                  "openai"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -695,17 +734,24 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["xAI"]
+                "enum": [
+                  "xAI"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
               "model": {
                 "anyOf": [
                   {
-                    "enum": ["grok-beta", "AUTODETECT"]
+                    "enum": [
+                      "grok-beta",
+                      "AUTODETECT"
+                    ]
                   },
                   {
                     "type": "string"
@@ -719,10 +765,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["replicate"]
+                "enum": [
+                  "replicate"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -747,8 +797,7 @@
                   }
                 ]
               },
-              "markdownDescription": "Select a pre-defined option, or find an exact model ID from Replicate [here](https://replicate.com/collections/streaming-language-models).",
-              "x-intellij-html-description": "Select a pre-defined option, or find an exact model ID from Replicate <a href='https://replicate.com/collections/streaming-language-models'>here</a>."
+              "markdownDescription": "Select a pre-defined option, or find an exact model ID from Replicate [here](https://replicate.com/collections/streaming-language-models)."
             }
           }
         },
@@ -756,7 +805,9 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["openai"]
+                "enum": [
+                  "openai"
+                ]
               },
               "apiType": {
                 "not": {
@@ -764,7 +815,9 @@
                 }
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -831,10 +884,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["anthropic"]
+                "enum": [
+                  "anthropic"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -874,10 +931,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["cohere"]
+                "enum": [
+                  "cohere"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -908,10 +969,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["bedrock"]
+                "enum": [
+                  "bedrock"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -936,10 +1001,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["sagemaker"]
+                "enum": [
+                  "sagemaker"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -953,10 +1022,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["gemini"]
+                "enum": [
+                  "gemini"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -987,10 +1060,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["together"]
+                "enum": [
+                  "together"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1018,8 +1095,7 @@
                     "type": "string"
                   }
                 ],
-                "markdownDescription": "Select a pre-defined option, or find an exact model string from Together AI [here](https://docs.together.ai/docs/inference-models).",
-                "x-intellij-html-description": "Select a pre-defined option, or find an exact model string from Together AI <a href='https://docs.together.ai/docs/inference-models'>here</a>."
+                "markdownDescription": "Select a pre-defined option, or find an exact model string from Together AI [here](https://docs.together.ai/docs/inference-models)."
               }
             }
           }
@@ -1028,10 +1104,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["novita"]
+                "enum": [
+                  "novita"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1058,8 +1138,7 @@
                     "type": "string"
                   }
                 ],
-                "markdownDescription": "Select a pre-defined option, or find an exact model string from Novita AI [here](https://novita.ai/llm-api?utm_source=github_continuedev&utm_medium=github_readme&utm_campaign=github_link).",
-                "x-intellij-html-description": "Select a pre-defined option, or find an exact model string from Novita AI <a href='https://novita.ai/llm-api?utm_source=github_continuedev&utm_medium=github_readme&utm_campaign=github_link'>here</a>."
+                "markdownDescription": "Select a pre-defined option, or find an exact model string from Novita AI [here](https://novita.ai/llm-api?utm_source=github_continuedev&utm_medium=github_readme&utm_campaign=github_link)."
               }
             }
           }
@@ -1068,16 +1147,19 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["deepinfra"]
+                "enum": [
+                  "deepinfra"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
               "model": {
-                "markdownDescription": "Find the model name you want to use from DeepInfra [here](https://deepinfra.com/models?type=text-generation).",
-                "x-intellij-html-description": "Find the model name you want to use from DeepInfra <a href='https://deepinfra.com/models?type=text-generation'>here</a>."
+                "markdownDescription": "Find the model name you want to use from DeepInfra [here](https://deepinfra.com/models?type=text-generation)."
               }
             }
           }
@@ -1095,7 +1177,9 @@
                 ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1149,10 +1233,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["ollama"]
+                "enum": [
+                  "ollama"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1199,8 +1287,7 @@
                     "type": "string"
                   }
                 ],
-                "markdownDescription": "Select a pre-defined option, or find the exact model tag for an Ollama model [here](https://ollama.ai/library).",
-                "x-intellij-html-description": "Select a pre-defined option, or find the exact model tag for an Ollama model <a href='https://ollama.ai/library'>here</a>."
+                "markdownDescription": "Select a pre-defined option, or find the exact model tag for an Ollama model [here](https://ollama.ai/library)."
               }
             }
           }
@@ -1209,10 +1296,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["mistral"]
+                "enum": [
+                  "mistral"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1234,23 +1325,34 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["vertexai"]
+                "enum": [
+                  "vertexai"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
-            "required": ["projectId", "region"]
+            "required": [
+              "projectId",
+              "region"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "provider": {
-                "enum": ["moonshot"]
+                "enum": [
+                  "moonshot"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1276,10 +1378,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["deepseek"]
+                "enum": [
+                  "deepseek"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1296,7 +1402,10 @@
                 }
               },
               "model": {
-                "enum": ["deepseek-chat", "deepseek-coder"]
+                "enum": [
+                  "deepseek-chat",
+                  "deepseek-coder"
+                ]
               }
             }
           }
@@ -1305,10 +1414,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["groq"]
+                "enum": [
+                  "groq"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1332,10 +1445,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["siliconflow"]
+                "enum": [
+                  "siliconflow"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1369,10 +1486,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["scaleway"]
+                "enum": [
+                  "scaleway"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1391,8 +1512,7 @@
                     "type": "string"
                   }
                 ],
-                "markdownDescription": "Select a pre-defined option, or find the exact model string from Scaleway [here](https://www.scaleway.com/en/docs/ai-data/generative-apis/reference-content/supported-models/).",
-                "x-intellij-html-description": "Select a pre-defined option, or find the exact model string from Scaleway <a href='https://www.scaleway.com/en/docs/ai-data/generative-apis/reference-content/supported-models/'>here</a>."
+                "markdownDescription": "Select a pre-defined option, or find the exact model string from Scaleway [here](https://www.scaleway.com/en/docs/ai-data/generative-apis/reference-content/supported-models/)."
               }
             }
           }
@@ -1401,10 +1521,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["ovhcloud"]
+                "enum": [
+                  "ovhcloud"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1433,8 +1557,7 @@
                     "type": "string"
                   }
                 ],
-                "markdownDescription": "Select a pre-defined option, or find the exact model string from OVHcloud [AI Endpoints catalog](https://endpoints.ai.cloud.ovh.net/catalog).",
-                "x-intellij-html-description": "Select a pre-defined option, or find the exact model string from OVHcloud <a href='https://endpoints.ai.cloud.ovh.net/catalog'>AI Endpoints catalog</a>."
+                "markdownDescription": "Select a pre-defined option, or find the exact model string from OVHcloud [AI Endpoints catalog](https://endpoints.ai.cloud.ovh.net/catalog)."
               }
             }
           }
@@ -1443,15 +1566,21 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["fireworks"]
+                "enum": [
+                  "fireworks"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
               "model": {
-                "enum": ["starcoder-7b"]
+                "enum": [
+                  "starcoder-7b"
+                ]
               }
             }
           }
@@ -1460,15 +1589,23 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["ncompass"]
+                "enum": [
+                  "ncompass"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
               "model": {
-                "enum": ["qwen2.5-coder-32b", "qwen2.5-72b", "llama3.3-70b"]
+                "enum": [
+                  "qwen2.5-coder-32b",
+                  "qwen2.5-72b",
+                  "llama3.3-70b"
+                ]
               }
             }
           }
@@ -1480,20 +1617,29 @@
                 "const": "azure"
               }
             },
-            "required": ["apiType"]
+            "required": [
+              "apiType"
+            ]
           },
           "then": {
-            "required": ["deployment", "apiBase"]
+            "required": [
+              "deployment",
+              "apiBase"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "provider": {
-                "enum": ["openai"]
+                "enum": [
+                  "openai"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1511,10 +1657,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["cerebras"]
+                "enum": [
+                  "cerebras"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1532,10 +1682,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["flowise"]
+                "enum": [
+                  "flowise"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1562,7 +1716,10 @@
                       "type": "string"
                     }
                   },
-                  "required": ["key", "value"]
+                  "required": [
+                    "key",
+                    "value"
+                  ]
                 }
               },
               "additionalFlowiseConfiguration": {
@@ -1581,7 +1738,10 @@
                       "description": "Configuration Property value"
                     }
                   },
-                  "required": ["key", "value"]
+                  "required": [
+                    "key",
+                    "value"
+                  ]
                 }
               },
               "model": {
@@ -1655,10 +1815,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["watsonx"]
+                "enum": [
+                  "watsonx"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1694,17 +1858,25 @@
                 ]
               }
             },
-            "required": ["apiBase", "apiKey", "apiVersion"]
+            "required": [
+              "apiBase",
+              "apiKey",
+              "apiVersion"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "provider": {
-                "enum": ["sambanova"]
+                "enum": [
+                  "sambanova"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1738,10 +1910,14 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["ask-sage"]
+                "enum": [
+                  "ask-sage"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
@@ -1773,17 +1949,23 @@
           "if": {
             "properties": {
               "provider": {
-                "enum": ["venice"]
+                "enum": [
+                  "venice"
+                ]
               }
             },
-            "required": ["provider"]
+            "required": [
+              "provider"
+            ]
           },
           "then": {
             "properties": {
               "model": {
                 "anyOf": [
                   {
-                    "enum": ["AUTODETECT"]
+                    "enum": [
+                      "AUTODETECT"
+                    ]
                   },
                   {
                     "type": "string"
@@ -1850,7 +2032,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["issue"]
+                "enum": [
+                  "issue"
+                ]
               }
             }
           },
@@ -1863,17 +2047,23 @@
                     "description": "Enter the URL of the GitHub repository for which you want to generate the issue."
                   }
                 },
-                "required": ["repositoryUrl"]
+                "required": [
+                  "repositoryUrl"
+                ]
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "name": {
-                "enum": ["edit"]
+                "enum": [
+                  "edit"
+                ]
               }
             }
           },
@@ -1883,8 +2073,7 @@
                 "properties": {
                   "recap": {
                     "type": "boolean",
-                    "markdownDescription": "If recap is set to `true`, Continue will generate a summary of the changes after making the edit.",
-                    "x-intellij-html-description": "If recap is set to <code>true</code>, Continue will generate a summary of the changes after making the edit."
+                    "markdownDescription": "If recap is set to `true`, Continue will generate a summary of the changes after making the edit."
                   },
                   "tokenLimit": {
                     "type": "integer",
@@ -1899,7 +2088,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["share"]
+                "enum": [
+                  "share"
+                ]
               }
             }
           },
@@ -1909,8 +2100,7 @@
                 "properties": {
                   "outputDir": {
                     "type": "string",
-                    "markdownDescription": "If outputDir is set to `.` or begins with `./` or `.\\`, file will be saved to the current workspace or a subdirectory thereof, respectively. `~` can similarly be used to specify the user's home directory.",
-                    "x-intellij-html-description": "If outputDir is set to <code>.</code> or begins with <code>./</code> or <code>.\\</code>, file will be saved to the current workspace or a subdirectory thereof, respectively. <code>~</code> can similarly be used to specify the user's home directory."
+                    "markdownDescription": "If outputDir is set to `.` or begins with `./` or `.\\`, file will be saved to the current workspace or a subdirectory thereof, respectively. `~` can similarly be used to specify the user's home directory."
                   }
                 }
               }
@@ -1921,7 +2111,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["commit"]
+                "enum": [
+                  "commit"
+                ]
               }
             }
           },
@@ -1931,8 +2123,7 @@
                 "properties": {
                   "includeUnstaged": {
                     "type": "boolean",
-                    "markdownDescription": "If set to `true`, then unstaged changes are also included in the prompt, otherwise only staged changes are included. Default is `false`.",
-                    "x-intellij-html-description": "If set to <code>true</code>, then unstaged changes are also included in the prompt, otherwise only staged changes are included. Default is <code>false</code>."
+                    "markdownDescription": "If set to `true`, then unstaged changes are also included in the prompt, otherwise only staged changes are included. Default is `false`."
                   }
                 }
               }
@@ -1940,7 +2131,10 @@
           }
         }
       ],
-      "required": ["name", "description"]
+      "required": [
+        "name",
+        "description"
+      ]
     },
     "CustomCommand": {
       "title": "CustomCommand",
@@ -1959,7 +2153,11 @@
           "type": "string"
         }
       },
-      "required": ["name", "prompt", "description"]
+      "required": [
+        "name",
+        "prompt",
+        "description"
+      ]
     },
     "ContextProviderWithParams": {
       "title": "ContextProviderWithParams",
@@ -2046,7 +2244,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["discord"]
+                "enum": [
+                  "discord"
+                ]
               }
             }
           },
@@ -2079,11 +2279,15 @@
                               "description": "The name of the channel"
                             }
                           },
-                          "required": ["id"]
+                          "required": [
+                            "id"
+                          ]
                         }
                       }
                     },
-                    "required": ["discordKey"]
+                    "required": [
+                      "discordKey"
+                    ]
                   }
                 }
               },
@@ -2092,14 +2296,18 @@
                   {
                     "properties": {
                       "params": {
-                        "required": ["guildId"]
+                        "required": [
+                          "guildId"
+                        ]
                       }
                     }
                   },
                   {
                     "properties": {
                       "params": {
-                        "required": ["channels"]
+                        "required": [
+                          "channels"
+                        ]
                       }
                     }
                   }
@@ -2112,7 +2320,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["google"]
+                "enum": [
+                  "google"
+                ]
               }
             }
           },
@@ -2125,17 +2335,23 @@
                     "description": "Your API key for https://serper.dev in order to get Google search results"
                   }
                 },
-                "required": ["serperApiKey"]
+                "required": [
+                  "serperApiKey"
+                ]
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "name": {
-                "enum": ["web"]
+                "enum": [
+                  "web"
+                ]
               }
             }
           },
@@ -2158,7 +2374,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["search"]
+                "enum": [
+                  "search"
+                ]
               }
             }
           },
@@ -2181,7 +2399,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["open"]
+                "enum": [
+                  "open"
+                ]
               }
             }
           },
@@ -2203,7 +2423,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["repo-map"]
+                "enum": [
+                  "repo-map"
+                ]
               }
             }
           },
@@ -2225,7 +2447,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["debugger"]
+                "enum": [
+                  "debugger"
+                ]
               }
             }
           },
@@ -2248,7 +2472,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["diff"]
+                "enum": [
+                  "diff"
+                ]
               }
             }
           },
@@ -2270,7 +2496,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["issue"]
+                "enum": [
+                  "issue"
+                ]
               }
             }
           },
@@ -2299,24 +2527,37 @@
                         "type": {
                           "type": "string",
                           "description": "The type of issues to search for",
-                          "enum": ["open", "closed", "all"]
+                          "enum": [
+                            "open",
+                            "closed",
+                            "all"
+                          ]
                         }
                       },
-                      "required": ["owner", "repo"]
+                      "required": [
+                        "owner",
+                        "repo"
+                      ]
                     }
                   }
                 },
-                "required": ["repos"]
+                "required": [
+                  "repos"
+                ]
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "name": {
-                "enum": ["database"]
+                "enum": [
+                  "database"
+                ]
               }
             }
           },
@@ -2337,7 +2578,12 @@
                         "connection_type": {
                           "type": "string",
                           "description": "The type of database (e.g., 'postgres', 'mysql')",
-                          "enum": ["postgres", "mysql", "sqlite", "mssql"]
+                          "enum": [
+                            "postgres",
+                            "mysql",
+                            "sqlite",
+                            "mssql"
+                          ]
                         },
                         "connection": {
                           "type": "object",
@@ -2370,21 +2616,31 @@
                           "required": []
                         }
                       },
-                      "required": ["name", "connection_type", "connection"]
+                      "required": [
+                        "name",
+                        "connection_type",
+                        "connection"
+                      ]
                     }
                   }
                 },
-                "required": ["connections"]
+                "required": [
+                  "connections"
+                ]
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "name": {
-                "enum": ["gitlab-mr"]
+                "enum": [
+                  "gitlab-mr"
+                ]
               }
             }
           },
@@ -2405,17 +2661,23 @@
                     "description": "If you have code selected, filters out comments that aren't related to the selection."
                   }
                 },
-                "required": ["token"]
+                "required": [
+                  "token"
+                ]
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "name": {
-                "enum": ["jira"]
+                "enum": [
+                  "jira"
+                ]
               }
             }
           },
@@ -2445,8 +2707,7 @@
                   },
                   "apiVersion": {
                     "type": "integer",
-                    "markdownDescription": "This context provider supports both Jira API version 2 and 3. It will use version 3 by default since that's what the cloud version uses, but if you have the datacenter version of Jira, you'll need to set the API Version to 2 using the `apiVersion` property.",
-                    "x-intellij-html-description": "This context provider supports both Jira API version 2 and 3. It will use version 3 by default since that's what the cloud version uses, but if you have the datacenter version of Jira, you'll need to set the API Version to 2 using the <code>apiVersion</code> property."
+                    "markdownDescription": "This context provider supports both Jira API version 2 and 3. It will use version 3 by default since that's what the cloud version uses, but if you have the datacenter version of Jira, you'll need to set the API Version to 2 using the `apiVersion` property."
                   },
                   "requestOptions": {
                     "title": "Request Options",
@@ -2466,17 +2727,24 @@
                     ]
                   }
                 },
-                "required": ["domain", "token"]
+                "required": [
+                  "domain",
+                  "token"
+                ]
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "name": {
-                "enum": ["http"]
+                "enum": [
+                  "http"
+                ]
               }
             }
           },
@@ -2494,17 +2762,24 @@
                     "type": "object"
                   }
                 },
-                "required": ["url"]
+                "required": [
+                  "url"
+                ]
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "name": {
-                "enum": ["codebase", "folder"]
+                "enum": [
+                  "codebase",
+                  "folder"
+                ]
               }
             }
           },
@@ -2539,7 +2814,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["docs"]
+                "enum": [
+                  "docs"
+                ]
               }
             }
           },
@@ -2579,7 +2856,9 @@
           "if": {
             "properties": {
               "name": {
-                "enum": ["postgres"]
+                "enum": [
+                  "postgres"
+                ]
               }
             }
           },
@@ -2629,17 +2908,27 @@
                     "type": "integer"
                   }
                 },
-                "required": ["host", "port", "user", "password", "database"]
+                "required": [
+                  "host",
+                  "port",
+                  "user",
+                  "password",
+                  "database"
+                ]
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "name": {
-                "enum": ["greptile"]
+                "enum": [
+                  "greptile"
+                ]
               }
             }
           },
@@ -2660,17 +2949,24 @@
                     "type": "string"
                   }
                 },
-                "required": ["GreptileToken", "GithubToken"]
+                "required": [
+                  "GreptileToken",
+                  "GithubToken"
+                ]
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         },
         {
           "if": {
             "properties": {
               "name": {
-                "enum": ["commit"]
+                "enum": [
+                  "commit"
+                ]
               }
             }
           },
@@ -2693,11 +2989,15 @@
                 }
               }
             },
-            "required": ["params"]
+            "required": [
+              "params"
+            ]
           }
         }
       ],
-      "required": ["name"]
+      "required": [
+        "name"
+      ]
     },
     "SerializedContinueConfig": {
       "title": "config.json",
@@ -2731,20 +3031,21 @@
                 "description": "Only use local crawling for this documentation site"
               }
             },
-            "required": ["title", "startUrl"]
+            "required": [
+              "title",
+              "startUrl"
+            ]
           }
         },
         "allowAnonymousTelemetry": {
           "title": "Allow Anonymous Telemetry",
           "markdownDescription": "If this field is set to `true`, we will collect anonymous telemetry as described in the documentation page on telemetry. If set to `false`, we will not collect any data. Learn more in [the docs](https://docs.continue.dev/telemetry).",
-          "x-intellij-html-description": "If this field is set to `true`, we will collect anonymous telemetry as described in the documentation page on telemetry. If set to `false`, we will not collect any data. Learn more in <a href='https://docs.continue.dev/telemetry'>the docs</a>.",
           "default": true,
           "type": "boolean"
         },
         "models": {
           "title": "Models",
           "markdownDescription": "Learn about setting up models in [the documentation](https://docs.continue.dev/model-setup/overview).",
-          "x-intellij-html-description": "Learn about setting up models in <a href='https://docs.continue.dev/model-setup/overview'>the documentation</a>.",
           "default": [
             {
               "title": "Claude 3.7 Sonnet",
@@ -2793,7 +3094,6 @@
         "slashCommands": {
           "title": "Slash Commands",
           "markdownDescription": "An array of slash commands that let you take custom actions from the sidebar. Learn more in the [documentation](https://docs.continue.dev/customization/slash-commands).",
-          "x-intellij-html-description": "An array of slash commands that let you take custom actions from the sidebar. Learn more in the <a href='https://docs.continue.dev/customization/slash-commands'>documentation</a>.",
           "default": [],
           "type": "array",
           "items": {
@@ -2803,7 +3103,6 @@
         "customCommands": {
           "title": "Custom Commands",
           "markdownDescription": "An array of custom commands that allow you to reuse prompts. Each has name, description, and prompt properties. When you enter `/<name>` in the text input, it will act as a shortcut to the prompt. Learn more in the [documentation](https://docs.continue.dev/customization/slash-commands#custom-commands-use-natural-language).",
-          "x-intellij-html-description": "An array of custom commands that allow you to reuse prompts. Each has name, description, and prompt properties. When you enter <code>/<name></code> in the text input, it will act as a shortcut to the prompt. Learn more in the <a href='https://docs.continue.dev/customization/slash-commands#custom-commands-use-natural-language'>documentation</a>.",
           "default": [
             {
               "name": "test",
@@ -2819,7 +3118,6 @@
         "contextProviders": {
           "title": "Context Providers",
           "markdownDescription": "A list of ContextProvider objects that can be used to provide context to the LLM by typing '@'. Read more about ContextProviders in [the documentation](https://docs.continue.dev/customization/context-providers).",
-          "x-intellij-html-description": "A list of ContextProvider objects that can be used to provide context to the LLM by typing '@'. Read more about ContextProviders in <a href='https://docs.continue.dev/customization/context-providers'>the documentation</a>.",
           "default": [],
           "type": "array",
           "items": {
@@ -2834,21 +3132,18 @@
         "disableIndexing": {
           "title": "Disable Indexing",
           "markdownDescription": "If set to `true`, Continue will not index the codebase. This is mainly used for debugging purposes.",
-          "x-intellij-html-description": "If set to <code>true</code>, Continue will not index the codebase. This is mainly used for debugging purposes.",
           "default": false,
           "type": "boolean"
         },
         "disableSessionTitles": {
           "title": "Disable Session Titles",
           "markdownDescription": "If set to `true`, Continue will not make extra requests to the LLM to generate a summary title of each session.",
-          "x-intellij-html-description": "If set to <code>true</code>, Continue will not make extra requests to the LLM to generate a summary title of each session.",
           "default": false,
           "type": "boolean"
         },
         "embeddingsProvider": {
           "title": "Embeddings Provider",
           "markdownDescription": "The method that will be used to generate codebase embeddings. The default is `transformers.js`, which will run locally in the browser. Learn about the other options [here](https://docs.continue.dev/features/codebase-embeddings#embeddings-providers).",
-          "x-intellij-html-description": "The method that will be used to generate codebase embeddings. The default is <code>transformers.js</code>, which will run locally in the browser. Learn about the other options <a href='https://docs.continue.dev/features/codebase-embeddings#embeddings-providers'>here</a>.<br><br><strong>Note</strong>: <code>transformers.js</code> currently cannot be used in JetBrains.",
           "type": "object",
           "properties": {
             "provider": {
@@ -2925,7 +3220,9 @@
               "type": "string"
             }
           },
-          "required": ["provider"],
+          "required": [
+            "provider"
+          ],
           "allOf": [
             {
               "if": {
@@ -2941,20 +3238,28 @@
                     ]
                   }
                 },
-                "required": ["provider"]
+                "required": [
+                  "provider"
+                ]
               },
               "then": {
-                "required": ["apiKey"]
+                "required": [
+                  "apiKey"
+                ]
               }
             },
             {
               "if": {
                 "properties": {
                   "provider": {
-                    "enum": ["sagemaker"]
+                    "enum": [
+                      "sagemaker"
+                    ]
                   }
                 },
-                "required": ["provider"]
+                "required": [
+                  "provider"
+                ]
               },
               "then": {
                 "properties": {
@@ -2962,17 +3267,23 @@
                     "description": "SageMaker endpoint name"
                   }
                 },
-                "required": ["model"]
+                "required": [
+                  "model"
+                ]
               }
             },
             {
               "if": {
                 "properties": {
                   "provider": {
-                    "enum": ["vertexai"]
+                    "enum": [
+                      "vertexai"
+                    ]
                   }
                 },
-                "required": ["provider"]
+                "required": [
+                  "provider"
+                ]
               },
               "then": {
                 "properties": {
@@ -2987,7 +3298,11 @@
                     "default": "text-embedding-005"
                   }
                 },
-                "required": ["projectId", "model", "region"]
+                "required": [
+                  "projectId",
+                  "model",
+                  "region"
+                ]
               }
             }
           ]
@@ -3013,16 +3328,22 @@
               "type": "object"
             }
           },
-          "required": ["name"],
+          "required": [
+            "name"
+          ],
           "allOf": [
             {
               "if": {
                 "properties": {
                   "name": {
-                    "enum": ["cohere"]
+                    "enum": [
+                      "cohere"
+                    ]
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               },
               "then": {
                 "properties": {
@@ -3045,7 +3366,9 @@
                         "type": "string"
                       }
                     },
-                    "required": ["apiKey"]
+                    "required": [
+                      "apiKey"
+                    ]
                   }
                 }
               }
@@ -3054,10 +3377,14 @@
               "if": {
                 "properties": {
                   "name": {
-                    "enum": ["llm"]
+                    "enum": [
+                      "llm"
+                    ]
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               },
               "then": {
                 "properties": {
@@ -3068,7 +3395,9 @@
                         "type": "string"
                       }
                     },
-                    "required": ["modelTitle"]
+                    "required": [
+                      "modelTitle"
+                    ]
                   }
                 }
               }
@@ -3077,10 +3406,14 @@
               "if": {
                 "properties": {
                   "name": {
-                    "enum": ["voyage"]
+                    "enum": [
+                      "voyage"
+                    ]
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               },
               "then": {
                 "properties": {
@@ -3099,7 +3432,9 @@
                         ]
                       }
                     },
-                    "required": ["apiKey"]
+                    "required": [
+                      "apiKey"
+                    ]
                   }
                 }
               }
@@ -3108,10 +3443,14 @@
               "if": {
                 "properties": {
                   "name": {
-                    "enum": ["bedrock"]
+                    "enum": [
+                      "bedrock"
+                    ]
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               },
               "then": {
                 "properties": {
@@ -3119,10 +3458,15 @@
                     "type": "object",
                     "properties": {
                       "model": {
-                        "enum": ["cohere.rerank-v3-5:0", "amazon.rerank-v1:0"]
+                        "enum": [
+                          "cohere.rerank-v3-5:0",
+                          "amazon.rerank-v1:0"
+                        ]
                       }
                     },
-                    "required": ["model"]
+                    "required": [
+                      "model"
+                    ]
                   }
                 }
               }
@@ -3131,10 +3475,14 @@
               "if": {
                 "properties": {
                   "name": {
-                    "enum": ["huggingface-tei"]
+                    "enum": [
+                      "huggingface-tei"
+                    ]
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               },
               "then": {
                 "properties": {
@@ -3154,12 +3502,17 @@
                         "default": false
                       },
                       "truncation_direction": {
-                        "enum": ["Right", "Left"],
+                        "enum": [
+                          "Right",
+                          "Left"
+                        ],
                         "description": "Whether to truncate sequences from the left or right.",
                         "default": "Right"
                       }
                     },
-                    "required": ["apiBase"]
+                    "required": [
+                      "apiBase"
+                    ]
                   }
                 },
                 "if": {
@@ -3170,7 +3523,9 @@
                   }
                 },
                 "then": {
-                  "required": ["truncation_direction"]
+                  "required": [
+                    "truncation_direction"
+                  ]
                 }
               }
             },
@@ -3178,10 +3533,14 @@
               "if": {
                 "properties": {
                   "name": {
-                    "enum": ["siliconflow"]
+                    "enum": [
+                      "siliconflow"
+                    ]
                   }
                 },
-                "required": ["name"]
+                "required": [
+                  "name"
+                ]
               },
               "then": {
                 "properties": {
@@ -3203,7 +3562,9 @@
                         "type": "string"
                       }
                     },
-                    "required": ["apiKey"]
+                    "required": [
+                      "apiKey"
+                    ]
                   }
                 }
               }
@@ -3213,7 +3574,6 @@
         "tabAutocompleteModel": {
           "title": "Tab Autocomplete Model",
           "markdownDescription": "The model used for tab autocompletion. If undefined, Continue will default to using qwen2.5-coder:1.5b on a local Ollama instance.\n\n*IMPORTANT*:\n\nIf you use a custom model, ensure that it is one trained for fill-in-the-middle completions. An instruct model is typically not well-suited to autocomplete and you may receive unsatisfactory completions.",
-          "x-intellij-html-description": "The model used for tab autocompletion. If undefined, Continue will default to using qwen2.5-coder:1.5b on a local Ollama instance.<br><br><i>IMPORTANT</i>:<br><br>If you use a custom model, ensure that it is one trained for fill-in-the-middle completions. An instruct model is typically not well-suited to autocomplete and you may receive unsatisfactory completions.",
           "default": {
             "title": "Tab Autocomplete Model",
             "provider": "ollama",
@@ -3235,7 +3595,6 @@
           "title": "TabAutocompleteOptions",
           "type": "object",
           "markdownDescription": "These options let you customize your tab-autocomplete experience. Read about all options in [the docs](https://docs.continue.dev/features/tab-autocomplete#configuration-options).",
-          "x-intellij-html-description": "These options let you customize your tab-autocomplete experience. Read about all options in <a href='https://docs.continue.dev/features/tab-autocomplete#configuration-options'>the docs</a>.",
           "properties": {
             "disable": {
               "type": "boolean",
@@ -3267,7 +3626,11 @@
               "description": "An optional template string to be used for autocomplete. It will be rendered with the Mustache templating language, and is passed the 'prefix' and 'suffix' variables."
             },
             "multilineCompletions": {
-              "enum": ["always", "never", "auto"],
+              "enum": [
+                "always",
+                "never",
+                "auto"
+              ],
               "description": "If set to true, Continue will only complete a single line at a time."
             },
             "useCache": {
@@ -3292,7 +3655,10 @@
           "type": "object",
           "properties": {
             "codeBlockToolbarPosition": {
-              "enum": ["top", "bottom"],
+              "enum": [
+                "top",
+                "bottom"
+              ],
               "default": "top",
               "description": "Whether to show the copy and apply code buttons at the top or bottom of code blocks in the sidebar."
             },
@@ -3307,7 +3673,6 @@
             "showChatScrollbar": {
               "title": "Show Chat Scrollbar",
               "markdownDescription": "If set to `true`, a scrollbar will be displayed in the chat window to navigate through messages.",
-              "x-intellij-html-description": "If set to <code>true</code>, a scrollbar will be displayed in the chat window to navigate through messages.",
               "default": false,
               "type": "boolean"
             },
@@ -3323,7 +3688,9 @@
           "properties": {
             "provider": {
               "type": "string",
-              "enum": ["logstash"],
+              "enum": [
+                "logstash"
+              ],
               "description": "The 3rd party analytics provider to use."
             },
             "url": {
@@ -3335,18 +3702,24 @@
               "description": "The client key to use for analytics"
             }
           },
-          "required": ["provider"],
+          "required": [
+            "provider"
+          ],
           "allOf": [
             {
               "if": {
                 "properties": {
                   "provider": {
-                    "enum": ["logstash"]
+                    "enum": [
+                      "logstash"
+                    ]
                   }
                 }
               },
               "then": {
-                "required": ["url"]
+                "required": [
+                  "url"
+                ]
               }
             }
           ]
@@ -3418,7 +3791,10 @@
                     "default": false
                   }
                 },
-                "required": ["prompt", "title"]
+                "required": [
+                  "prompt",
+                  "title"
+                ]
               },
               "description": "Quick actions are a way to add custom commands to the Code Lens of function and class declarations."
             },
@@ -3464,7 +3840,9 @@
                         "properties": {
                           "type": {
                             "type": "string",
-                            "enum": ["stdio"]
+                            "enum": [
+                              "stdio"
+                            ]
                           },
                           "command": {
                             "type": "string"
@@ -3483,54 +3861,75 @@
                             "description": "Environment variables to pass to the command"
                           }
                         },
-                        "required": ["type", "command", "args"]
+                        "required": [
+                          "type",
+                          "command",
+                          "args"
+                        ]
                       },
                       {
                         "type": "object",
                         "properties": {
                           "type": {
                             "type": "string",
-                            "enum": ["websocket"]
+                            "enum": [
+                              "websocket"
+                            ]
                           },
                           "url": {
                             "type": "string",
                             "format": "uri"
                           }
                         },
-                        "required": ["type", "url"]
+                        "required": [
+                          "type",
+                          "url"
+                        ]
                       },
                       {
                         "type": "object",
                         "properties": {
                           "type": {
                             "type": "string",
-                            "enum": ["sse"]
+                            "enum": [
+                              "sse"
+                            ]
                           },
                           "url": {
                             "type": "string",
                             "format": "uri"
                           }
                         },
-                        "required": ["type", "url"]
+                        "required": [
+                          "type",
+                          "url"
+                        ]
                       },
                       {
                         "type": "object",
                         "properties": {
                           "type": {
                             "type": "string",
-                            "enum": ["streamable-http"]
+                            "enum": [
+                              "streamable-http"
+                            ]
                           },
                           "url": {
                             "type": "string",
                             "format": "uri"
                           }
                         },
-                        "required": ["type", "url"]
+                        "required": [
+                          "type",
+                          "url"
+                        ]
                       }
                     ]
                   }
                 },
-                "required": ["transport"]
+                "required": [
+                  "transport"
+                ]
               }
             }
           }

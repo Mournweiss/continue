@@ -333,10 +333,6 @@ export default class DocsService {
 
   // Determine if transformers.js embeddings are supported in this environment
   async canUseTransformersEmbeddings() {
-    const ideInfo = await this.ideInfoPromise;
-    if (ideInfo.ideType === "jetbrains") {
-      return false;
-    }
     return true;
   }
 

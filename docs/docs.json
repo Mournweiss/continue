@@ -309,10 +309,6 @@
       "destination": "/ide-extensions/install"
     },
     {
-      "source": "/install/jetbrains",
-      "destination": "/ide-extensions/install"
-    },
-    {
       "source": "/customize/model-types",
       "destination": "/customize/model-roles/intro"
     },

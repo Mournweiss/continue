@@ -158,12 +158,8 @@ describe("GlobalContext", () => {
 
   it("should update and retrieve multiple values correctly", () => {
     globalContext.update("indexingPaused", true);
-    globalContext.update("hasDismissedConfigTsNoticeJetBrains", false);
 
     expect(globalContext.get("indexingPaused")).toBe(true);
-    expect(globalContext.get("hasDismissedConfigTsNoticeJetBrains")).toBe(
-      false,
-    );
   });
 
   it("should handle updating hasAlreadyCreatedAPromptFile correctly", () => {

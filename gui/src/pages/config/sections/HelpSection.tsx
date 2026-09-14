@@ -13,7 +13,6 @@ import { IdeMessengerContext } from "../../../context/IdeMessenger";
 import { useAppDispatch, useAppSelector } from "../../../redux/hooks";
 import { setOnboardingCard } from "../../../redux/slices/uiSlice";
 import { saveCurrentSession } from "../../../redux/thunks/session";
-import { isJetBrains } from "../../../util";
 import { ROUTES } from "../../../util/navigation";
 import { ConfigHeader } from "../components/ConfigHeader";
 import { ConfigRow } from "../components/ConfigRow";
@@ -101,51 +100,6 @@ const vscodeShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
   },
 ];
 
-const jetbrainsShortcuts: Omit<KeyboardShortcutProps, "isEven">[] = [
-  {
-    shortcut: "cmd '",
-    description: "Toggle Selected Model",
-  },
-  {
-    shortcut: "cmd I",
-    description: "Edit highlighted code",
-  },
-  {
-    shortcut: "cmd J",
-    description:
-      "New Chat / New Chat With Selected Code / Close Continue Sidebar If Chat Already In Focus",
-  },
-  {
-    shortcut: "cmd backspace",
-    description: "Cancel response",
-  },
-  {
-    shortcut: "cmd shift I",
-    description: "Toggle inline edit focus",
-  },
-  {
-    shortcut: "cmd shift J",
-    description:
-      "Focus Current Chat / Add Selected Code To Current Chat / Close Continue Sidebar If Chat Already In Focus",
-  },
-  {
-    shortcut: "cmd shift backspace",
-    description: "Reject Diff",
-  },
-  {
-    shortcut: "cmd shift enter",
-    description: "Accept Diff",
-  },
-  {
-    shortcut: "alt shift J",
-    description: "Quick Input",
-  },
-  {
-    shortcut: "alt cmd J",
-    description: "Toggle Sidebar",
-  },
-];
-
 export function HelpSection() {
   const ideMessenger = useContext(IdeMessengerContext);
   const navigate = useNavigate();
@@ -154,7 +108,7 @@ export function HelpSection() {
   const currentSession = useAppSelector((state) => state.session);
 
   const shortcuts = useMemo(() => {
-    return isJetBrains() ? jetbrainsShortcuts : vscodeShortcuts;
+    return vscodeShortcuts;
   }, []);
 
   const handleViewSessionData = async () => {

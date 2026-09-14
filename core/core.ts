@@ -275,21 +275,6 @@ export class Core {
   private registerMessageHandlers(ideSettingsPromise: Promise<IdeSettings>) {
     const on = this.messenger.on.bind(this.messenger);
 
-    // Note, VsCode's in-process messenger doesn't do anything with this
-    // It will only show for jetbrains
-    this.messenger.onError((message, err) => {
-      // just to prevent duplicate error messages in jetbrains (same logic in webview protocol)
-      if (
-        ["llm/streamChat", "chatDescriber/describe"].includes(
-          message.messageType,
-        )
-      ) {
-        return;
-      } else {
-        void this.ide.showToast("error", err.message);
-      }
-    });
-
     on("abort", (msg) => {
       this.abortById(msg.data ?? msg.messageId);
     });
@@ -1427,27 +1412,6 @@ export class Core {
     } catch (e) {
       let knownError = false;
 
-      if (e instanceof Error) {
-        // After removing transformers JS embeddings provider from jetbrains
-        // Should no longer see this error
-        // if (e.message.toLowerCase().includes("embeddings provider")) {
-        //   knownError = true;
-        //   const toastOption = "See Docs";
-        //   void this.ide
-        //     .showToast(
-        //       "error",
-        //       `Set up an embeddings model to use @${name}`,
-        //       toastOption,
-        //     )
-        //     .then((userSelection) => {
-        //       if (userSelection === toastOption) {
-        //         void this.ide.openUrl(
-        //           "https://docs.continue.dev/customize/model-roles/embeddings",
-        //         );
-        //       }
-        //     });
-        // }
-      }
       if (!knownError) {
         void this.ide.showToast(
           "error",

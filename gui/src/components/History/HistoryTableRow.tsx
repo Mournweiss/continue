@@ -46,7 +46,6 @@ export function HistoryTableRow({
   }, [sessionMetadata]);
 
   const shareSession = async (sessionId: string) => {
-    // "session/share" is not supported in JetBrains yet
     if (shareSessionSupported) {
       await ideMessenger.request("session/share", {
         sessionId,

@@ -119,7 +119,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-
 **/node_modules
 **/out
 notes.txt
@@ -130,12 +129,6 @@ codeql
 .DS_Store
 .test
 .tiktoken_cache
-
-
-# IntelliJ Plugin
-**/**/.gradle
-**/**/.qodana
-**/**/build
 
 continue_server.build
 continue_server.dist
@@ -150,9 +143,7 @@ Icon?
 notes.md
 *.notes.md
 
-manual-testing-sandbox/.idea/**
 manual-testing-sandbox/.continue/**
-extensions/intellij/.idea/**
 
 **/.idea/workspace.xml
 **/.idea/usage.statistics.xml
@@ -161,13 +152,9 @@ extensions/intellij/.idea/**
 **/.idea/php.xml
 **/.idea/kotlinc.xml
 
-
-extensions/intellij/bin
 extensions/.continue-debug/
 
 *.vsix
-
-# intellij module library files
 *.iml
 
 .continuerules
