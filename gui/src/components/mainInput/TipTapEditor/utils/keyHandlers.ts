@@ -18,8 +18,6 @@ export function useEditorEventHandlers(options: {
    *
    * Currently keydown events for a number of keys are not registering if the
    * meta/shift key is pressed, for example "x", "c", "v", "z", etc.
-   * Until this is resolved we can't turn on OSR for non-Mac users due to issues
-   * with those key actions.
    */
   const handleKeyDown = async (e: KeyboardEvent<HTMLDivElement>) => {
     if (!editor) {

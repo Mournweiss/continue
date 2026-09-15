@@ -22,8 +22,6 @@ import {
   OnboardingCard,
   useOnboardingCard,
 } from "./OnboardingCard";
-import OSRContextMenu from "./OSRContextMenu";
-
 const LayoutTopDiv = styled(CustomScrollbarDiv)`
   height: 100%;
   position: relative;
@@ -198,7 +196,6 @@ const Layout = () => {
     <LocalStorageProvider>
       <AuthProvider>
         <LayoutTopDiv>
-          <OSRContextMenu />
           <div
             style={{
               scrollbarGutter: "stable both-edges",
