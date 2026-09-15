@@ -54,6 +54,8 @@ CORE_DIR="core"
 GUI_DIR="gui"
 VSCODE_DIR="extensions/vscode"
 CLI_DIR="extensions/cli"
+VSCODE_BUILD_DIR="$VSCODE_DIR/build"
+CLI_DIST_DIR="$CLI_DIR/dist"
 
 # Shared packages that must be built first (in dependency order)
 SHARED_PACKAGES=(
@@ -341,7 +343,24 @@ build_vscode() {
         return 1
     fi
 
+    # Generate .vsix package
+    info "Generating .vsix package..."
+    mkdir -p "$VSCODE_BUILD_DIR"
+
+    if npm run package; then
+        local vsix_file
+        vsix_file=$(find "$VSCODE_BUILD_DIR" -name "*.vsix" -type f 2>/dev/null | head -n 1)
+        if [[ -n "$vsix_file" ]]; then
+            success ".vsix package generated: $vsix_file"
+        else
+            warn ".vsix package generation completed but no .vsix file found"
+        fi
+    else
+        warn "Failed to generate .vsix package"
+    fi
+
     success "── VS Code extension built successfully ──"
+
     cd "$PROJECT_ROOT"
 }
 
@@ -372,7 +391,15 @@ build_cli() {
         return 1
     fi
 
+    # Display CLI binary location
+    if [[ -f "$CLI_DIST_DIR/cn.js" ]]; then
+        local bundle_size
+        bundle_size=$(du -sh "$CLI_DIST_DIR" 2>/dev/null | cut -f1)
+        info "CLI binary bundle: $CLI_DIST_DIR (size: $bundle_size) ──"
+    fi
+
     success "── CLI built successfully ──"
+
     cd "$PROJECT_ROOT"
 }
 
@@ -407,22 +434,22 @@ main() {
     local BUILD_SUCCESS="true"
 
     # Build packages first if needed
-    if [[ "$BUILD_PACKAGES" == "true" ]]; then
+    if [[ "$BUILD_PACKAGES" == "true" || "$BUILD_ALL" == "true" ]]; then
         build_packages || { BUILD_SUCCESS="false"; }
     fi
 
     # Build core if needed (required by other components)
-    if [[ "$BUILD_CORE" == "true" ]]; then
+    if [[ "$BUILD_CORE" == "true" || "$BUILD_ALL" == "true" ]]; then
         build_core || { BUILD_SUCCESS="false"; }
     fi
 
     # Build GUI if needed
-    if [[ "$BUILD_GUI" == "true" ]]; then
+    if [[ "$BUILD_GUI" == "true" || "$BUILD_ALL" == "true" ]]; then
         build_gui || { BUILD_SUCCESS="false"; }
     fi
 
     # Build VS Code extension if needed (depends on core)
-    if [[ "$BUILD_VSCODE" == "true" ]]; then
+    if [[ "$BUILD_VSCODE" == "true" || "$BUILD_ALL" == "true" ]]; then
         # Ensure core is built first
         if [[ "$BUILD_CORE" != "true" ]]; then
             build_core || { BUILD_SUCCESS="false"; }
@@ -431,7 +458,7 @@ main() {
     fi
 
     # Build CLI if needed (depends on core)
-    if [[ "$BUILD_CLI" == "true" ]]; then
+    if [[ "$BUILD_CLI" == "true" || "$BUILD_ALL" == "true" ]]; then
         # Ensure core is built first
         if [[ "$BUILD_CORE" != "true" ]]; then
             build_core || { BUILD_SUCCESS="false"; }
@@ -442,6 +469,19 @@ main() {
     # Final result
     if [[ "$BUILD_SUCCESS" == "true" ]]; then
         success "── Build completed successfully ──"
+        
+        # Display output locations
+        if [[ "$BUILD_VSCODE" == "true" || "$BUILD_ALL" == "true" ]] && [[ -d "$VSCODE_BUILD_DIR" ]]; then
+            local vsix_files
+            vsix_files=$(find "$VSCODE_BUILD_DIR" -name "*.vsix" -type f 2>/dev/null)
+            if [[ -n "$vsix_files" ]]; then
+                info "VS Code packages: $vsix_files"
+            fi
+        fi
+        if [[ "$BUILD_CLI" == "true" || "$BUILD_ALL" == "true" ]] && [[ -d "$CLI_DIST_DIR" ]]; then
+            info "CLI binary: $CLI_DIST_DIR/cn.js"
+        fi
+        
         exit 0
     else
         error "── Build failed ──"
