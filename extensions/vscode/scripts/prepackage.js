@@ -258,6 +258,33 @@ void (async () => {
     "win32-arm64": "@lancedb/vectordb-win32-arm64-msvc",
   };
 
+  // Map build targets to @vscode/ripgrep platform packages
+  // See: https://www.npmjs.com/package/@vscode/ripgrep (optionalDependencies)
+  const ripgrepPackagesByTarget = {
+    // macOS
+    "darwin-arm64": "@vscode/ripgrep-darwin-arm64",
+    "darwin-x64": "@vscode/ripgrep-darwin-x64",
+    // Linux
+    "linux-arm64": "@vscode/ripgrep-linux-arm64",
+    "linux-arm": "@vscode/ripgrep-linux-arm",
+    "linux-x64": "@vscode/ripgrep-linux-x64",
+    "linux-ppc64": "@vscode/ripgrep-linux-ppc64",
+    "linux-riscv64": "@vscode/ripgrep-linux-riscv64",
+    "linux-s390x": "@vscode/ripgrep-linux-s390x",
+    "linux-ia32": "@vscode/ripgrep-linux-ia32",
+    // Windows
+    "win32-x64": "@vscode/ripgrep-win32-x64",
+    "win32-arm64": "@vscode/ripgrep-win32-arm64",
+    "win32-ia32": "@vscode/ripgrep-win32-ia32",
+  };
+
+  const ripgrepPackageToInstall = ripgrepPackagesByTarget[target];
+  let ripgrepPackagePath;
+  if (ripgrepPackageToInstall) {
+    // ripgrepPackagePath will be the full scoped package name, e.g. @vscode/ripgrep-linux-x64
+    ripgrepPackagePath = ripgrepPackageToInstall;
+  }
+
   const packageToInstall = lancedbPackagesByTarget[target];
   let packageDirName;
   let expectedPackagePath;
@@ -334,6 +361,9 @@ void (async () => {
 
   // Copy node_modules for pre-built binaries
   const NODE_MODULES_TO_COPY = ["@lancedb", "@vscode/ripgrep", "workerpool"];
+  if (ripgrepPackagePath) {
+    NODE_MODULES_TO_COPY.push(ripgrepPackagePath);
+  }
 
   fs.mkdirSync("out/node_modules", { recursive: true });
 
@@ -431,8 +461,10 @@ void (async () => {
     "models/all-MiniLM-L6-v2/vocab.txt",
     "models/all-MiniLM-L6-v2/onnx/model_quantized.onnx",
 
-    // node_modules (it's a bit confusing why this is necessary)
-    `node_modules/@vscode/ripgrep/bin/rg${exe}`,
+    // node_modules
+    ripgrepPackagePath
+      ? `node_modules/${ripgrepPackagePath}/bin/rg${exe}`
+      : `node_modules/@vscode/ripgrep-linux-x64/bin/rg${exe}`,
 
     // out directory (where the extension.js lives)
     // "out/extension.js", This is generated afterward by vsce
@@ -443,8 +475,10 @@ void (async () => {
     // SQLite3 Node native module
     "out/build/Release/node_sqlite3.node",
 
-    // out/node_modules (to be accessed by extension.js)
-    `out/node_modules/@vscode/ripgrep/bin/rg${exe}`,
+    // out/node_modules
+    ripgrepPackagePath
+      ? `out/node_modules/${ripgrepPackagePath}/bin/rg${exe}`
+      : `out/node_modules/@vscode/ripgrep-linux-x64/bin/rg${exe}`,
     `out/node_modules/@lancedb/vectordb-${target}${isWinTarget ? "-msvc" : ""}${isLinuxTarget ? "-gnu" : ""}/index.node`,
   ]);
 
