@@ -1,0 +1,4 @@
+[submodule "scripts/common"]
+	path = scripts/common
+	url = https://github.com/Mournweiss/scripts-collection.git
+	branch = main
