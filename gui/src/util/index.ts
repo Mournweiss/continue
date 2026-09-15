@@ -37,6 +37,10 @@ export function getMetaKeyLabel(): string {
   return getPlatform() === "mac" ? "⌘" : "Ctrl";
 }
 
+export function getAltKeyLabel(): string {
+  return getPlatform() === "mac" ? "Option \u2325" : "Alt";
+}
+
 export function getFontSize(): number {
   return getLocalStorage("fontSize") ?? 14;
 }

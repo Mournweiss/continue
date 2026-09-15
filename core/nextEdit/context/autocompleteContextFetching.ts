@@ -62,7 +62,7 @@ export const getAutocompleteContext = async (
     throw new Error("No config available");
   }
 
-  if (isSecurityConcern(input.filepath)) {
+  if (await isSecurityConcern(ide, input.filepath)) {
     throw new Error("File is a security concern, autocomplete disabled");
   }
 

@@ -88,6 +88,18 @@ export type ToIdeFromWebviewOrCoreProtocol = {
 
   reportError: [any, void];
   closeSidebar: [undefined, void];
+
+  // Webview environment
+  getWebviewEnvironment: [
+    undefined,
+    {
+      windowId: string;
+      serverUrl: string;
+      workspacePaths: string[];
+      vscMachineId: string;
+      vscMediaUrl: string;
+    },
+  ];
 };
 
 export type ToWebviewOrCoreFromIdeProtocol = {

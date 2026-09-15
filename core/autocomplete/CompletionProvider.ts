@@ -72,7 +72,7 @@ export class CompletionProvider {
     if (!llm) {
       return undefined;
     }
-  
+
     // Ignore empty API keys for Mistral since we currently write
     // a template provider without one during onboarding
     if (llm.providerName === "mistral" && llm.apiKey === "") {
@@ -162,7 +162,7 @@ export class CompletionProvider {
         return undefined;
       }
 
-      if (isSecurityConcern(input.filepath)) {
+      if (await isSecurityConcern(this.ide, input.filepath)) {
         return undefined;
       }
 

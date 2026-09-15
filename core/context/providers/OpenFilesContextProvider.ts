@@ -31,7 +31,7 @@ class OpenFilesContextProvider extends BaseContextProvider {
         const { relativePathOrBasename, last2Parts, baseName } =
           getUriDescription(filepath, workspaceDirs);
 
-        if (isSecurityConcern(filepath)) {
+        if (await isSecurityConcern(ide, filepath)) {
           return {
             description: last2Parts,
             content:

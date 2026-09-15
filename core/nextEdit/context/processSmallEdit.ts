@@ -24,7 +24,7 @@ export const processSmallEdit = async (
     recentlyVisitedRanges: [],
   };
 
-  if (!isSecurityConcern(beforeAfterdiff.filePath)) {
+  if (!(await isSecurityConcern(ide, beforeAfterdiff.filePath))) {
     NextEditProvider.getInstance().addDiffToContext(
       createDiff({
         beforeContent: beforeAfterdiff.beforeContent,

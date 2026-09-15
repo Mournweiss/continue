@@ -260,7 +260,7 @@ export class NextEditProvider {
       usingFullFileDiff: boolean;
     },
   ): Promise<NextEditOutcome | undefined> {
-    if (isSecurityConcern(input.filepath)) {
+    if (await isSecurityConcern(this.ide, input.filepath)) {
       return undefined;
     }
     try {
